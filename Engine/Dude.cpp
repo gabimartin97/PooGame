@@ -1,33 +1,38 @@
 #include "Dude.h"
 #include "Graphics.h"
 
+Dude::Dude(Vec2 loc_in)
+{
+	location = loc_in;
+}
+
 void Dude::ClampToScreen()
 {
-	const float right = x + width;
-	if( x < 0 )
+	const float right = location.x + width;
+	if( location.x < 0 )
 	{
-		x = 0;
+		location.x = 0;
 	}
 	else if( right >= float( Graphics::ScreenWidth ) )
 	{
-		x = float( Graphics::ScreenWidth - 1 ) - width;
+		location.x = float( Graphics::ScreenWidth - 1 ) - width;
 	}
 
-	const float bottom = y + height;
-	if( y < 0 )
+	const float bottom = location.y + height;
+	if( location.y < 0 )
 	{
-		y = 0;
+		location.y = 0;
 	}
 	else if( bottom >= float( Graphics::ScreenHeight ) )
 	{
-		y = float( Graphics::ScreenHeight - 1 ) - height;
+		location.y = float( Graphics::ScreenHeight - 1 ) - height;
 	}
 }
 
 void Dude::Draw( Graphics& gfx ) const
 {
-	const int x_int = int( x );
-	const int y_int = int( y );
+	const int x_int = int( location.x );
+	const int y_int = int( location.y );
 
 	gfx.PutPixel( 7 + x_int,0 + y_int,0,0,0 );
 	gfx.PutPixel( 8 + x_int,0 + y_int,0,0,0 );
@@ -351,32 +356,37 @@ void Dude::Update( const Keyboard & kbd,float dt )
 {
 	if( kbd.KeyIsPressed( VK_RIGHT ) )
 	{
-		x += speed * dt;
+		location.x += speed * dt;
 	}
 	if( kbd.KeyIsPressed( VK_LEFT ) )
 	{
-		x -= speed * dt;
+		location.x -= speed * dt;
 	}
 	if( kbd.KeyIsPressed( VK_DOWN ) )
 	{
-		y += speed * dt;
+		location.y += speed * dt;
 	}
 	if( kbd.KeyIsPressed( VK_UP ) )
 	{
-		y -= speed * dt;
+		location.y -= speed * dt;
 	}
 }
 
-float Dude::GetX() const
+Vec2 Dude::GetLocation()const
 {
-	return x;
+	return location;
+}
+
+/*float Dude::GetX() const
+{
+	return location.x;
 }
 
 float Dude::GetY() const
 {
-	return y;
+	return location.y;
 }
-
+*/
 float Dude::GetWidth() const
 {
 	return width;
