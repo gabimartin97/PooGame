@@ -7,10 +7,10 @@
 class Goal
 {
 public:
-	Goal(Vec2 location_in){
-		location = location_in;
-	}
-
+	Goal(const Vec2& location_in)
+	:
+		location(location_in)
+	{}
 	void Draw( Graphics& gfx ) const
 	{
 		gfx.DrawRectDim( int( location.x ),int( location.y ),int( dimension ),int( dimension ),c );

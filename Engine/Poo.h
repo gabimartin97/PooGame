@@ -7,7 +7,7 @@
 class Poo
 {
 public:
-	void Init( Vec2 loc_in, Vec2 velocity_in );
+	void Init( const Vec2& loc_in, const Vec2& velocity_in );
 	void Update( float dt );
 	bool TestCollision( const Dude& dude ) const;
 	void Draw( Graphics& gfx ) const;

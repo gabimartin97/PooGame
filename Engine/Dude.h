@@ -7,7 +7,7 @@
 class Dude
 {
 public:
-	Dude(Vec2 loc_in);
+	Dude(const Vec2& loc_in);
 	void ClampToScreen();
 	void Draw( Graphics& gfx ) const;
 	void Update( const Keyboard& kbd,float dt );

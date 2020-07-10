@@ -2,7 +2,7 @@
 #include "Graphics.h"
 #include <assert.h>
 
-void Poo::Init(Vec2 loc_in, Vec2 velocity_in)
+void Poo::Init(const Vec2& loc_in, const Vec2& velocity_in)
 {
 	assert( initialized == false );
 	location = loc_in;

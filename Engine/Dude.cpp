@@ -1,7 +1,7 @@
 #include "Dude.h"
 #include "Graphics.h"
 
-Dude::Dude(Vec2 loc_in)
+Dude::Dude(const Vec2& loc_in)
 {
 	location = loc_in;
 }
